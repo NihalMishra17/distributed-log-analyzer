@@ -1,4 +1,4 @@
-FROM bitnami/spark:3.5
+FROM apache/spark:3.5.0-python3
 
 USER root
 
@@ -9,4 +9,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY log_processor.py .
 
-CMD ["python", "log_processor.py"]
+CMD ["python3", "log_processor.py"]
