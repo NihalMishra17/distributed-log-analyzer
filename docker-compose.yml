@@ -118,6 +118,21 @@ services:
     networks:
       - log-analyzer-network
 
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: api
+    depends_on:
+      - redis
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    networks:
+      - log-analyzer-network
+
 networks:
   log-analyzer-network:
     driver: bridge
